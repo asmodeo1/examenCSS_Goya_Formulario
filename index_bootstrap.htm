@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Tipo de letra: https://www.dafont.com/es/parmainitialenmk.font 
+        Icono de Goya: modificación de https://www.flaticon.es/icono-gratis/goya_119017
+        Cuadros: diferentes páginas de internet
+        Texto: web del Museo del Prado
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goya</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* Aunque usemos Bootstrap muchas veces también tendremos que crear nuestros propios
+      estilos, sobre todo al usar fuentes y colores que no ofrece directamente, salvo
+      que creemos un Bootstrap personalizado */
+      @font-face {
+        font-family: Parma;
+        /* Esta fuente solo tiene mayúsculas */
+        src: url(ParmaInitialenMK.ttf);
+      }
+      body {
+        background-color: rgb(159, 107, 91);
+      }
+      header {
+        font-family: Parma;
+        color: rgb(230, 198, 147);
+        background-color: rgb(111, 72, 5);
+        /* Podemos poner varias imágenes separadas por comas */
+        background-image: url(goya.png), url(goya.png);
+        background-repeat: no-repeat;
+        /* Colocamos cada imagen en una esquina y centradas verticalmente */
+        background-position: left center, right center;
+        /* Para que el tamaño de la imagen se adapte a su contenedor */
+        background-size: contain;
+      }
+      nav a {
+        background-color: rgba(111, 72, 5, 0.4);
+        /* O podemos usar flex
+        display: flex;
+        justify-content: end;*/
+      }
+      nav a:hover {
+        background-color: rgba(111, 72, 5, 1);
+      }
+      main {
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        color: rgb(240, 201, 132);
+        background-color: rgb(159, 107, 91);
+      }
+      main p {
+        font-size: 1.2rem;
+      }
+      /* Mejor sería usar clases en lugar de estoe selector y el siguiente.
+      Cogemos los div hijos directos de row, no nietos */
+      .row > div {
+        min-width: 300px !important;
+        color: rgb(233, 185, 136);
+        background: linear-gradient(
+          90deg,
+          rgb(175, 73, 5) 0%,
+          rgb(121, 64, 3) 100%
+        );
+      }
+      /* Cuando el ratón pase por encima del cuadro aplicamos un filtro a la imagen */
+      .row > div:hover img {
+        filter: sepia(1);
+      }
+      footer {
+        color: rgb(230, 198, 147);
+        background-color: rgb(111, 72, 5);
+      }
+
+      /* En tamaño de 800px o menos ocultamos las imágenes del fondo de la cabecera */
+      @media screen and (max-width: 880px) {
+        header {
+          background-image: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- con la clase text-center centramos horizontalmente un texto -->
+    <header><h1 class="text-center">LOS CUADROS DE GOYA</h1></header>
+    <!-- Usamos felxbos para ponder centrar los menús, o ponerlos a la derecha
+    en pantallas medianas en adelante -->
+    <nav class="d-flex justify-content-center justify-content-md-end">
+      <!-- p-2 es un padding, m-2 es un margin, quitamos subrayado de los enlaces
+      y los ponemos en color blanco -->
+      <a href="index.htm" class="p-2 m-2 text-decoration-none text-white"
+        >Inicio</a
+      >
+      <a href="cuadros.htm" class="p-2 m-2 text-decoration-none text-white"
+        >Cuadros</a
+      >
+      <a href="museo.htm" class="p-2 m-2 text-decoration-none text-white"
+        >Museo</a
+      >
+      <a href="contacto.htm" class="p-2 m-2 text-decoration-none text-white"
+        >Contacto</a
+      >
+    </nav>
+    <!-- Ponemos un padding pequeño -->
+    <main class="p-1">
+      <p>
+        Goya nació en Fuendetodos, pueblo de su familia materna. Braulio José
+        Goya, dorador, de ascendencia vizcaína, y Gracia Lucientes, de familia
+        campesina acomodada, residían en Zaragoza, donde contrajeron matrimonio
+        en 1736. Francisco fue el cuarto de seis hermanos: Rita (1737); Tomás
+        (1739), dorador también, citado a veces como pintor; Jacinta (1743);
+        Mariano (1750), muerto en la infancia, y Camilo (1753), eclesiástico y
+        capellán desde 1784 de la colegiata de Chinchón.
+      </p>
+      <p>
+        Tras la escuela, que la tradición acepta con reservas como la de los
+        padres escolapios de Zaragoza, entró en el taller de José Luzán
+        (1710-1785), hijo también de un dorador vecino de los Goya vinculado a
+        la Academia de Dibujo.
+      </p>
+      <!-- Podríamos usar también section class="d-flex flex-wrap">-->
+      <section class="container">
+        <!-- con row creamos una fila que será de tipo flexbox.
+          Con gap-3 ponemos un margen entre filas y columnas.
+          Usamos justify-content-center para centrar los cuadros horizontalmente.
+          Usamos text-end para alinear el texto de los párrafos a la derecha (en lenguajes 
+          LtR / Left to Right - Izquierda a derecha) -->
+        <div class="row gap-3 justify-content-center text-end">
+          <!-- Creamos una columna que ocupará 11 de las 12 columnas del contenedor, pues
+          queremos dejar un margen a los lados, 3 columnas a partir de pantalla medianas
+          y 2 a partir de pantallas extragrandes. Así hacemos que aparezcan más o menos
+          cuadros.
+          Con shadow ponemos una sombra a la caja y con p-0 quitamos el padding. 
+          -->
+          <div class="col-11 col-md-3 col-xl-2 shadow p-0">
+            <img
+              src="imagenes/cuadro1.jpg"
+              alt="Los fusilamientos del 3 de Mayo "
+              class="w-100"><!-- con w-100 ocupa un 100% -->
+            <!-- mb es margen inferior y pe padding end (derecho en un lenguaje LtR) -->
+            <p class="mb-0 pe-2">Los fusilamientos del 3 de Mayo</p>
+          </div>
+          <div class="col-11 col-md-3 col-xl-2 shadow p-0">
+            <img src="imagenes/cuadro2.jpg" alt="El Aquelarre" class="w-100" />
+            <p class="mb-0 pe-2">El Aquelarre</p>
+          </div>
+          <div class="col-11 col-md-3 col-xl-2 shadow p-0">
+            <img src="imagenes/cuadro3.jpg" alt="La sombrilla" class="w-100" />
+            <p class="mb-0 pe-2">La sombrilla</p>
+          </div>
+          <div class="col-11 col-md-3 col-xl-2 shadow p-0">
+            <img
+              src="imagenes/cuadro4.jpg"
+              alt="La gallina ciega"
+              class="w-100"
+            />
+            <p class="mb-0 pe-2">La gallina ciega</p>
+          </div>
+          <div class="col-11 col-md-3 col-xl-2 shadow p-0">
+            <img
+              src="imagenes/cuadro5.jpg"
+              alt="Duelo a garrotazos"
+              class="w-100"
+            />
+            <p class="mb-0 pe-2">Duelo a garrotazos</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- mt es margin-top -->
+    <footer class="text-center p-1 mt-3">
+      <!-- En cursiva con fst-italic -->
+      <address class="fst-italic m-1">
+        <p class="m-0">C. de Ruiz de Alarcón, 23, Retiro</p>
+        <p class="m-0">28014 Madrid</p>
+      </address>
+    </footer>
+  </body>
+</html>

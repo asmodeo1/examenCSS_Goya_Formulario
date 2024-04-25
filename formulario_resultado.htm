@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
+        form {
+            background-color: blanchedalmond;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color:  rgb(148, 94, 12);
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px rgb(137, 138, 138);
+            width: 60%;
+            /* Un margen superior y auto a los lados para centrarlo */
+            margin: 20px auto auto;
+            padding: 10px;
+        }
+        div, fieldset {
+            margin: 20px auto;
+        }
+        /* Los controles requeridos con otro color de fondo */
+        :required {
+            background-color: rgb(191, 231, 217);
+        }
+        /* Creamos una clase común para los dos botones */
+        .boton {
+            border: none;
+            padding: 5px;
+            margin-right: 15px;
+            font-weight: bold;
+            color: white;
+        }
+        [type="submit"] {
+            background-color: green;
+        }
+        [type="reset"] {
+            background-color: rgb(245, 65, 65)
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="get">
+        <h1>Formulario de reserva</h1>
+        <!-- Metemos en un div el label e input para hacer que vayan en distintas
+        líneas de forma fácil -->
+        <div>
+            <!-- recordemos que el valor indicado en for debe ser el mismo que el
+            id en el input -->
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" required>
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div>
+            <label for="fechaEntrada">Fecha Entrada</label>
+            <input type="date" name="fechaEntrada" id="fechaEntrada">
+            <label for="fechaSalida">Fecha Salida</label>
+            <input type="date" name="fechaSalida" id="fechaSalida">
+        </div>
+        <fieldset>
+            <legend>Opciones</legend>
+            <input type="checkbox" name="desayuno" id="desayuno">
+            <label for="desayuno">Desayuno</label>
+            <input type="checkbox" name="comida" id="comida">
+            <label for="comida">Comida</label>
+            <input type="checkbox" name="cena" id="cena">
+            <label for="cena">Cena</label>
+        </fieldset>
+        <fieldset>
+            <legend>Personas</legend>
+            <label for="adultos">Adultos</label>
+            <!-- Si ponemos un valor mínimo, conviene poner un valor inicial -->
+            <input type="number" name="adultos" id="adultos" min="1" value="1" size="3">
+            <label for="ninhos">Niños</label>
+            <input type="number" name="ninhos" id="ninhos" min="1" value="1" size="3">
+        </fieldset>
+        <input type="submit" value="Registrar" class="boton"><input type="reset" value="Limpiar" class="boton">
+    </form>
+</body>
+</html>

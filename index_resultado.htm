@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Tipo de letra: https://www.dafont.com/es/parmainitialenmk.font 
+        Icono de Goya: modificación de https://www.flaticon.es/icono-gratis/goya_119017
+        Cuadros: diferentes páginas de internet
+        Texto: web del Museo del Prado
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goya</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        font-size: 100%;
+        font-weight: normal;
+      }
+      /* Esta fuente solo tiene mayúsculas */
+      @font-face {
+        font-family: Parma;
+        src: url(ParmaInitialenMK.ttf);
+      }
+      body {
+        background-color: rgb(159, 107, 91);
+      }
+      header {
+        font-family: Parma;
+        color: rgb(230, 198, 147);
+        background-color: rgb(111, 72, 5);
+        font-size: 3rem;
+        text-align: center;
+        padding-top: 10px;
+        /* Podemos poner varias imágenes separadas por comas */
+        background-image: url(goya.png), url(goya.png);
+        background-repeat: no-repeat;
+        /* Colocamos cada imagen en una esquina y centradas verticalmente */
+        background-position: left center, right center;
+        /* Para que el tamaño de la imagen se adapte a su contenedor */
+        background-size: contain;
+      }
+      nav {
+        text-align: right;
+        /* O podemos usar flex
+        display: flex;
+        justify-content: end;*/
+      }
+      nav a {
+        color: white;
+        background-color: rgba(111, 72, 5, 0.4);
+        display: inline-block;
+        padding: 10px;
+        margin: 5px;
+      }
+      nav a:hover {
+        background-color: rgba(111, 72, 5, 1);
+      }
+      main {
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        color: rgb(240, 201, 132);
+        background-color: rgb(159, 107, 91);
+      }
+      main p {
+        font-size: 1.2rem;
+        margin: 10px;
+      }
+      .cuadros {
+        /* Para poner los cuadros de imágenes en columnas */
+        display: flex;
+        /* Si no caben más cuadros en una misma fila, quereos que bajen a la siguiente
+        fila */
+        flex-wrap: wrap;
+        /* Margen enter las filas y columnas */
+        gap: 20px;
+        /* Centramos los cuadros horizontalmente */
+        justify-content: center;
+      }
+      .cuadro {
+        /* Le damos un ancho máximo */
+        max-width: 400px;
+        color: rgb(233, 185, 136);
+        background: linear-gradient(
+          90deg,
+          rgb(175, 73, 5) 0%,
+          rgb(121, 64, 3) 100%
+        );
+        box-shadow: 8px 8px 6px rgb(47, 47, 47);
+      }
+      .cuadro img {
+        /* Para que sean responsivas */
+        max-width: 100%;
+        /* Si es en línea deja un pequeño espacio de unos píxeles entre la imagen y el p */
+        display: block;
+      }
+      /* Cuando el ratón pase por encima del cuadro aplicamos un filtro a la imagen */
+      .cuadro:hover img {
+        filter: sepia(1);
+      }
+      .cuadro p {
+        text-align: right;
+        /* Arriba 0, derecha e izquierda 5px, abajo 5px */
+        padding: 0 5px 5px;
+      }
+      footer {
+        color: rgb(230, 198, 147);
+        background-color: rgb(111, 72, 5);
+        text-align: center;
+        padding: 10px;
+        margin-top: 20px;
+        /* Aunque los navegadores suelen poner el contenido de las etiquetas address en 
+        cursiva, con esto no aseguramos */
+        font-style: italic;
+      }
+      /* Estos anchos de las media queries los hemos sacado probando */
+      /* En tamaño de 800px o menos ocultamos las imágenes del fondo de la cabecera */
+      @media screen and (max-width: 880px) {
+        header {
+          background-image: none;
+        }
+      }
+      /* En tamaño de 600px o menos hacemos la letra del encabezado más pequeña, los menos
+      centrados horizontalmente y damos un margen al contenedor de cuadros para que no
+      queden pegados los cuadros a los bordes laterales */
+      @media screen and (max-width: 600px) {
+        header {
+          font-size: 2.5rem;
+        }
+        nav {
+          text-align: center;
+        }
+        .cuadros {
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+      }
+      /* Casi siempre conviene limitar el ancho máximo del contenido para que no quede
+      mal en monitores grandes */
+      @media screen and (min-width: 1300px) {
+        main {
+          max-width: 1200px;
+          margin: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>LOS CUADROS DE GOYA</h1></header>
+    <nav>
+      <a href="index.htm">Inicio</a>
+      <a href="cuadros.htm">Cuadros</a>
+      <a href="museo.htm">Museo</a>
+      <a href="contacto.htm">Contacto</a>
+    </nav>
+    <main>
+      <p>
+        Goya nació en Fuendetodos, pueblo de su familia materna. Braulio José
+        Goya, dorador, de ascendencia vizcaína, y Gracia Lucientes, de familia
+        campesina acomodada, residían en Zaragoza, donde contrajeron matrimonio
+        en 1736. Francisco fue el cuarto de seis hermanos: Rita (1737); Tomás
+        (1739), dorador también, citado a veces como pintor; Jacinta (1743);
+        Mariano (1750), muerto en la infancia, y Camilo (1753), eclesiástico y
+        capellán desde 1784 de la colegiata de Chinchón.
+      </p>
+      <p>
+        Tras la escuela, que la tradición acepta con reservas como la de los
+        padres escolapios de Zaragoza, entró en el taller de José Luzán
+        (1710-1785), hijo también de un dorador vecino de los Goya vinculado a
+        la Academia de Dibujo.
+      </p>
+      <section class="cuadros">
+        <div class="cuadro">
+          <img
+            src="imagenes/cuadro1.jpg"
+            alt="Los fusilamientos del 3 de Mayo "
+          />
+          <p>Los fusilamientos del 3 de Mayo</p>
+        </div>
+        <div class="cuadro">
+          <img src="imagenes/cuadro2.jpg" alt="El Aquelarre" />
+          <p>El Aquelarre</p>
+        </div>
+        <div class="cuadro">
+          <img src="imagenes/cuadro3.jpg" alt="La sombrilla" />
+          <p>La sombrilla</p>
+        </div>
+        <div class="cuadro">
+          <img src="imagenes/cuadro4.jpg" alt="La gallina ciega" />
+          <p>La gallina ciega</p>
+        </div>
+        <div class="cuadro">
+          <img src="imagenes/cuadro5.jpg" alt="Duelo a garrotazos" />
+          <p>Duelo a garrotazos</p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <address>
+        <p>C. de Ruiz de Alarcón, 23, Retiro</p>
+        <p>28014 Madrid</p>
+      </address>
+    </footer>
+  </body>
+</html>

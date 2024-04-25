@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+    <style>
+      form {
+        background-color: blanchedalmond;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        color: rgb(148, 94, 12);
+        border-radius: 10px;
+        box-shadow: 2px 2px 2px rgb(137, 138, 138);
+        width: 60%;
+        margin: 20px auto auto;
+        padding: 10px;
+      }
+      div,
+      fieldset {
+        margin: 20px auto;
+      }
+      :required {
+        background-color: rgb(191, 231, 217);
+      }
+      .boton {
+        border: none;
+        padding: 5px;
+        margin-right: 15px;
+        font-weight: bold;
+        color: white;
+      }
+      [type="submit"] {
+        background-color: green;
+      }
+      [type="reset"] {
+        background-color: rgb(245, 65, 65);
+      }
+
+      /* En tamaños grandes hacemos que los div vayan en la misma línea */
+      fieldset div {
+        display: inline-block;
+      }
+      /* En tamaños de 830px como máximo */
+      @media screen and (max-width: 830px) {
+        form {
+          /* Damos más ancho al formulario, pues teníamos 60% */
+          width: 90%; 
+        }
+        /* Dentro de cada div tenemos dos label y sus input correspondientes. Con
+        esto hacemos que vayan en filas diferentes */
+        form > div {
+          display: flex;
+          flex-direction: column;
+        }
+        /* Salvo en los div del fiedset que nos caben en la misma línea. Podríamos
+        haber creado unas clases para dejar más simple este y lo anterior */
+        fieldset div {
+          display: block;
+        }
+        /* Usamos flex para poner los botones a los lados */
+        .botones {
+            display: flex;
+            max-width: 100%;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+       /* En pantallas de 500px o más limitamos el tamaño de los divs para que los
+       input no sean muy anchos */
+        @media screen and (min-width: 500px) {
+          div {
+            max-width: 60%;
+            /* Como estaban con margin: auto (el el selector fieldset, div), ponemos
+             a cero al izquierdo para que no se centren. Otra vez, sería mejor
+             tener clases para evitar estos problemas */
+            margin-left: 0;
+          }
+          div:nth-of-type(2) {
+            max-width: 30%;
+            margin-left: 0;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" method="get">
+      <h1>Formulario de reserva</h1>
+      <div>
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" required />
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" required />
+      </div>
+      <div>
+        <label for="fechaEntrada">Fecha Entrada</label>
+        <input type="date" name="fechaEntrada" id="fechaEntrada" />
+        <label for="fechaSalida">Fecha Salida</label>
+        <input type="date" name="fechaSalida" id="fechaSalida" />
+      </div>
+      <fieldset>
+        <legend>Opciones</legend>
+        <div>
+          <input type="checkbox" name="desayuno" id="desayuno" />
+          <label for="desayuno">Desayuno</label>
+        </div>
+        <div>
+          <input type="checkbox" name="comida" id="comida" />
+          <label for="comida">Comida</label>
+        </div>
+        <div>
+          <input type="checkbox" name="cena" id="cena" />
+          <label for="cena">Cena</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Personas</legend>
+        <label for="adultos">Adultos</label>
+        <input
+          type="number"
+          name="adultos"
+          id="adultos"
+          min="1"
+          value="1"
+          size="3"
+        />
+        <label for="ninhos">Niños</label>
+        <input
+          type="number"
+          name="ninhos"
+          id="ninhos"
+          min="1"
+          value="1"
+          size="3"
+        />
+      </fieldset>
+      <div class="botones">
+        <input type="submit" value="Registrar" class="boton" />
+        <input type="reset" value="Limpiar" class="boton" />
+      </div>
+    </form>
+  </body>
+</html>
